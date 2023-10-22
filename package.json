@@ -1,0 +1,29 @@
+{
+  "name": "bluefox.query",
+  "version": "0.5.0",
+  "description": "^.,.^",
+  "scripts": {
+    "build": "webpack --config webpack.config.prod.js",
+    "dev": "webpack --config webpack.config.dev.js && npx webpack-dev-server --config webpack.config.dev.js --progress"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xoFeulB/BlueFoxQuery.git"
+  },
+  "keywords": [
+    "javascript"
+  ],
+  "author": "BlueFoxEnterprise",
+  "license": "© BlueFoxEnterprise / Void Ark, Inc. Common License / https://github.com/xoFeulB/BlueFoxQuery",
+  "bugs": {
+    "url": "https://github.com/xoFeulB/BlueFoxQuery/issues"
+  },
+  "homepage": "https://github.com/xoFeulB/BlueFoxQuery",
+  "devDependencies": {
+    "html-loader": "^4.2.0",
+    "html-webpack-plugin": "^5.5.3",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.15.1"
+  }
+}

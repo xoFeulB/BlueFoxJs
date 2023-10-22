@@ -1,3 +1,6 @@
+// © BlueFoxEnterprise
+// https://github.com/xoFeulB
+
 Void Ark, Inc. Common License
 
 Copyright (c) 2023 Void Ark, Inc.

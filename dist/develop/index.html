@@ -1,0 +1,62 @@
+<!doctype html><html><head><meta charset="utf-8"><title></title><link rel="css" href="./css/bluefox.query.css"/><script defer="defer" src="bluefox.query.js"></script></head><body><div><input id="input-1"> <select id="input-2"><option>test-1</option><option>test-2</option><option>test-3</option><option>test-4</option><option>test-5</option><option>test-6</option><option>test-7</option></select><div capture="#input-1">test</div><div sync sync-from="#input-1" sync-to-this sync-from-property="value" sync-to-property="textContent" sync-event='["sync","change","input"]'>test</div><div capture="#input-2">test</div></div><div id="root-1"><div id="area-1"><div volume>0</div><div add target="#area-1">1</div><div add target="#area-1">1</div><div add target="#area-1">1</div></div><hr><div id="area-2"><div volume>0</div><div add target="#area-2">1</div><div add target="#area-2">1</div><div add target="#area-2">1</div></div><hr><div id="area-3"><div volume>0</div><div add target="#area-3">1</div><div add target="#area-3">1</div><div add target="#area-3">1</div></div></div></body></html><script defer="defer">(() => {
+        window.addEventListener("BlueFoxQuery@Ready", (event) => {
+            let log = console.log;
+            const sleep = msec => new Promise(resolve => setTimeout(resolve, msec));
+            log(event);
+            event.detail.BlueFoxQuery.Walker.walkVertically(
+                {
+                    _scope_: document,
+                    "[add]": async (_) => {
+                        // await sleep(100);
+                        // _.self._scope_ = document.querySelector(_.element.attributes.target.value);
+                    },
+                    '[target="#area-1"]': async (_) => {
+                        await sleep(1000);
+                        _.self._scope_.querySelector("#area-1 [volume]").textContent = Number(_.element.textContent) + Number(_.self._scope_.querySelector("#area-1 [volume]").textContent);
+                        _.element.textContent = _.self._scope_.querySelector("#area-1 [volume]").textContent;
+                    },
+                    '[target="#area-2"]': async (_) => {
+                        await sleep(2000);
+                        _.self._scope_.querySelector("#area-2 [volume]").textContent = Number(_.element.textContent) + Number(_.self._scope_.querySelector("#area-2 [volume]").textContent);
+                        _.element.textContent = _.self._scope_.querySelector("#area-2 [volume]").textContent;
+                    },
+                    '[target="#area-3"]': async (_) => {
+                        await sleep(3000);
+                        _.self._scope_.querySelector("#area-3 [volume]").textContent = Number(_.element.textContent) + Number(_.self._scope_.querySelector("#area-3 [volume]").textContent);
+                        _.element.textContent = _.self._scope_.querySelector("#area-3 [volume]").textContent;
+                    },
+                    // '#root-1 [target="#area-1"]': async (_) => {
+                    //     await sleep(5000);
+                    //     _.self._scope_.querySelector("[volume]").textContent = Number(_.element.textContent) + Number(_.self._scope_.querySelector("[volume]").textContent);
+                    //     _.element.textContent = _.textContent;
+                    // },
+                    // '#root-1 [target="#area-2"]': async (_) => {
+                    //     await sleep(6000);
+                    //     _.self._scope_.querySelector("[volume]").textContent = Number(_.element.textContent) + Number(_.self._scope_.querySelector("[volume]").textContent);
+                    //     _.element.textContent = _.self._scope_.querySelector("[volume]").textContent;
+                    // },
+                    // '#root-1 [target="#area-3"]': async (_) => {
+                    //     await sleep(7000);
+                    //     _.self._scope_.querySelector("[volume]").textContent = Number(_.element.textContent) + Number(_.self._scope_.querySelector("[volume]").textContent);
+                    //     _.element.textContent = _.self._scope_.querySelector("[volume]").textContent;
+                    // },
+                    // '#root-2 [target="#area-1"]': async (_) => {
+                    //     await sleep(8000);
+                    //     _.self._scope_.querySelector("[volume]").textContent = Number(_.element.textContent) + Number(_.self._scope_.querySelector("[volume]").textContent);
+                    //     _.element.textContent = _.textContent;
+                    // },
+                    // '#root-2 [target="#area-2"]': async (_) => {
+                    //     await sleep(9000);
+                    //     _.self._scope_.querySelector("[volume]").textContent = Number(_.element.textContent) + Number(_.self._scope_.querySelector("[volume]").textContent);
+                    //     _.element.textContent = _.self._scope_.querySelector("[volume]").textContent;
+                    // },
+                    // '#root-2 [target="#area-3"]': async (_) => {
+                    //     await sleep(10000);
+                    //     _.self._scope_.querySelector("[volume]").textContent = Number(_.element.textContent) + Number(_.self._scope_.querySelector("[volume]").textContent);
+                    //     _.element.textContent = _.self._scope_.querySelector("[volume]").textContent;
+                    // },
+                }
+            );
+            event.detail.BlueFoxQuery.Sync.view();
+        });
+    })();</script>
