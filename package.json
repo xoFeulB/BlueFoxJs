@@ -1,6 +1,6 @@
 {
-  "name": "bluefox.query",
-  "version": "0.5.0",
+  "name": "@xoFeulB/BlueFoxQuery",
+  "version": "1.0.0",
   "description": "^.,.^",
   "scripts": {
     "build": "webpack --config webpack.config.prod.js",
