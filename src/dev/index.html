@@ -22,6 +22,24 @@
         <div sync sync-from="#input-1" sync-to-this sync-from-property="value" sync-to-property="textContent"
             sync-event='["sync","change","input"]'>test</div>
         <div capture="#input-2">test</div>
+
+        <input id="input-3" type="text">
+        <div id="output-3" value>sync json test</div>
+        <sync hidden>
+            [
+            {
+            "from":"#input-3/value",
+            "to":"#output-3/textContent",
+            "events":["input"],
+            "separator":"/"
+            },
+            {
+            "from":"#input-3.value",
+            "to":"#output-3.attributes.value.value",
+            "events":["input"]
+            }
+            ]
+        </sync>
     </div>
     <div id="root-1">
         <div id="area-1">
@@ -50,11 +68,11 @@
 </html>
 <script defer>
     (() => {
-        window.addEventListener("BlueFoxQuery@Ready", (event) => {
+        window.addEventListener("BlueFoxJs@Ready", (event) => {
             let log = console.log;
             const sleep = msec => new Promise(resolve => setTimeout(resolve, msec));
             log(event);
-            event.detail.BlueFoxQuery.Walker.walkVertically(
+            event.detail.BlueFoxJs.Walker.walkVertically(
                 {
                     _scope_: document,
                     "[add]": async (_) => {
@@ -108,7 +126,7 @@
                     // },
                 }
             );
-            event.detail.BlueFoxQuery.Sync.view();
+            event.detail.BlueFoxJs.Sync.view();
         });
     })();
 </script>

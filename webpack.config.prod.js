@@ -3,15 +3,15 @@ const path = require("path");
 module.exports = [
   {
     mode: "production",
-    entry: "./src/BlueFoxQuery/index.js",
+    entry: "./src/BlueFoxJs/index.js",
     output: {
       path: `${__dirname}/dist/production`,
-      filename: "bluefox.query.js",
+      filename: "bluefox.js",
     },
     resolve: {
       extensions: [".js"],
       alias: {
-        BlueFoxQuery: path.resolve(__dirname, "src/BlueFoxQuery/"),
+        BlueFoxJs: path.resolve(__dirname, "src/BlueFoxJs/"),
       },
     },
     optimization: {
@@ -20,24 +20,24 @@ module.exports = [
   },
   {
     mode: "production",
-    entry: "./src/BlueFoxQuery/index.js",
+    entry: "./src/BlueFoxJs/index.js",
     output: {
       path: `${__dirname}/dist/production`,
-      filename: "bluefox.query.min.js",
+      filename: "bluefox.min.js",
     },
     resolve: {
       extensions: [".js"],
       alias: {
-        BlueFoxQuery: path.resolve(__dirname, "src/BlueFoxQuery/"),
+        BlueFoxJs: path.resolve(__dirname, "src/BlueFoxJs/"),
       },
     },
   },
   {
     mode: "production",
-    entry: "./src/BlueFoxQuery/bluefox.query.js",
+    entry: "./src/BlueFoxJs/bluefox.js",
     output: {
       path: `${__dirname}/dist/production`,
-      filename: "bluefox.query.es.js",
+      filename: "bluefox.es.js",
       library: {
         type: "module",
       },
@@ -45,7 +45,7 @@ module.exports = [
     resolve: {
       extensions: [".js"],
       alias: {
-        BlueFoxQuery: path.resolve(__dirname, "src/BlueFoxQuery/"),
+        BlueFoxJs: path.resolve(__dirname, "src/BlueFoxJs/"),
       },
     },
     experiments: {
@@ -57,10 +57,10 @@ module.exports = [
   },
   {
     mode: "production",
-    entry: "./src/BlueFoxQuery/bluefox.query.js",
+    entry: "./src/BlueFoxJs/bluefox.js",
     output: {
       path: `${__dirname}/dist/production`,
-      filename: "bluefox.query.es.min.js",
+      filename: "bluefox.es.min.js",
       library: {
         type: "module",
       },
@@ -68,7 +68,7 @@ module.exports = [
     resolve: {
       extensions: [".js"],
       alias: {
-        BlueFoxQuery: path.resolve(__dirname, "src/BlueFoxQuery/"),
+        BlueFoxJs: path.resolve(__dirname, "src/BlueFoxJs/"),
       },
     },
     experiments: {

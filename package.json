@@ -1,5 +1,5 @@
 {
-  "name": "@xoFeulB/BlueFoxQuery",
+  "name": "@xoFeulB/BlueFoxJs",
   "version": "1.0.0",
   "description": "^.,.^",
   "scripts": {
@@ -8,20 +8,22 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xoFeulB/BlueFoxQuery.git"
+    "url": "git+https://github.com/xoFeulB/BlueFoxJs.git"
   },
   "keywords": [
     "javascript"
   ],
   "author": "BlueFoxEnterprise",
-  "license": "© BlueFoxEnterprise / Void Ark, Inc. Common License / https://github.com/xoFeulB/BlueFoxQuery",
+  "license": "© BlueFoxEnterprise / Void Ark, Inc. Common License / https://github.com/xoFeulB/BlueFoxJs",
   "bugs": {
-    "url": "https://github.com/xoFeulB/BlueFoxQuery/issues"
+    "url": "https://github.com/xoFeulB/BlueFoxJs/issues"
   },
-  "homepage": "https://github.com/xoFeulB/BlueFoxQuery",
+  "homepage": "https://github.com/xoFeulB/BlueFoxJs",
   "devDependencies": {
+    "css-loader": "^6.8.1",
     "html-loader": "^4.2.0",
     "html-webpack-plugin": "^5.5.3",
+    "style-loader": "^3.3.3",
     "webpack": "^5.89.0",
     "webpack-cli": "^5.0.1",
     "webpack-dev-server": "^4.15.1"

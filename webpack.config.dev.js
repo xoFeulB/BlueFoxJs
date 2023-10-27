@@ -4,15 +4,15 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   mode: "production",
-  entry: "./src/BlueFoxQuery/index.js",
+  entry: "./src/BlueFoxJs/index.js",
   output: {
     path: `${__dirname}/dist/develop`,
-    filename: "bluefox.query.js",
+    filename: "bluefox.js",
   },
   resolve: {
     extensions: [".js"],
     alias: {
-      BlueFoxQuery: path.resolve(__dirname, "src/BlueFoxQuery/"),
+      BlueFoxJs: path.resolve(__dirname, "src/BlueFoxJs/"),
     },
   },
   devServer: {
