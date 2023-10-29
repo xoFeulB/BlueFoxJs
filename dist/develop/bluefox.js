@@ -1,1 +1,309 @@
-(()=>{"use strict";const t=(e,n,r=".")=>{let o=e.split(r)[0],c=e.split(r).slice(1).join(r);if(null!=n[o]){let l=t(c,n[o],r);return!0===l?{object:n,property:o,path:e,separator:r,value:n[o]}:l}return e==c},n=e=>{const t=Object.getOwnPropertyNames(e);for(const r of t){const t=e[r];t&&"object"==typeof t&&n(t)}return Object.freeze(e)},r=async(e={_scope_:null})=>{let t=[];return Object.keys(e).filter((e=>!["_scope_"].includes(e))).forEach((n=>{[...e._scope_.querySelectorAll(n)].filter((e=>e)).forEach((e=>{t.push({element:e,selector:new String(n)})}))})),await Promise.all(t.map((t=>new Promise((async(n,r)=>{try{await e[t.selector]({element:t.element,selector:t.selector,self:e}),n(t.selector)}catch(e){console.info("walkHorizontally |",e)}}))))),e},o=async(e={_scope_:null})=>{for(let t of Object.keys(e).filter((e=>!["_scope_"].includes(e)))){let n=[...e._scope_.querySelectorAll(t)].filter((e=>e));for(let r of n)try{await e[t]({element:r,selector:new String(t),self:e})}catch(e){console.info("walkVertically |",e)}}return e},c=n({Util:{getProperty:t},Walker:{walkHorizontally:r,walkVertically:o},Sync:{view:async(n=document)=>{await r({_scope_:n,"[capture]":async e=>{let t=document.querySelector(e.element.attributes.capture.value).tagName.toLowerCase();e.element.setAttribute("sync",""),e.element.setAttribute("sync-to-this",""),"input"==t?(e.element.setAttribute("sync-to-property","textContent"),e.element.setAttribute("sync-from",e.element.attributes.capture.value),e.element.setAttribute("sync-from-property","value"),e.element.setAttribute("sync-event",JSON.stringify(["sync","change","input"]))):"select"==t&&(e.element.setAttribute("sync-to-property","textContent"),e.element.setAttribute("sync-from",e.element.attributes.capture.value),e.element.setAttribute("sync-from-property","selectedOptions.0.textContent"),e.element.setAttribute("sync-event",JSON.stringify(["sync","change"]))),e.element.removeAttribute("capture")}}),await o({_scope_:n,"[sync]":async n=>{let r=()=>{o()},o=()=>{n.element.SyncView={from:n.element.attributes["sync-from-this"]?e:document.querySelector(n.element.attributes["sync-from"].value),fromProperty:n.element.attributes["sync-from-property"].value,to:n.element.attributes["sync-to-this"]?n.element:document.querySelector(n.element.attributes["sync-to"].value),toProperty:n.element.attributes["sync-to-property"].value,events:JSON.parse(n.element.attributes["sync-event"]?n.element.attributes["sync-event"].value:'["sync"]'),entryNop:n.element.attributes["sync-entry-nop"],init:r},n.element.SyncView.sync=()=>{let e=t(n.element.SyncView.fromProperty,n.element.SyncView.from),r=t(n.element.SyncView.toProperty,n.element.SyncView.to);try{r.object[r.property]=e.object[e.property]}catch{}},!n.element.SyncView.entryNop&&n.element.SyncView.sync(),n.element.SyncView.events.forEach((e=>{n.element.SyncView.from.addEventListener(e,(e=>{n.element.SyncView.sync(),n.element.SyncView.to.dispatchEvent(new Event("sync"))}))}))};r()},sync:async e=>{let n=console.log,r=JSON.parse(e.element.textContent),o=()=>{c()},c=n=>{console.log(n);let r=n.separator?n.separator:".",c=n.from.split(r),l=n.to.split(r),s=n.events,y=e.self._scope_.querySelector(c[0]),i=e.self._scope_.querySelector(l[0]);e.element.SyncView={separator:r,from:y,fromProperty:c.slice(1).join(r),to:i,toProperty:l.slice(1).join(r),events:s,init:o},e.element.SyncView.sync=()=>{let n=t(e.element.SyncView.fromProperty,e.element.SyncView.from,e.element.SyncView.separator),r=t(e.element.SyncView.toProperty,e.element.SyncView.to,e.element.SyncView.separator);try{r.object[r.property]=n.object[n.property]}catch{}},e.element.SyncView.events.forEach((t=>{e.element.SyncView.from.addEventListener(t,(t=>{e.element.SyncView.sync(),e.element.SyncView.to.dispatchEvent(new Event("sync"))}))}))};Array.prototype==r.__proto__&&(n(r),r.forEach((e=>{o()}))),Object.prototype==r.__proto__&&o()}})}}});window.dispatchEvent(new CustomEvent("BlueFoxJs@Ready",{detail:{BlueFoxJs:c}}))})();
+/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+var __webpack_exports__ = {};
+
+;// CONCATENATED MODULE: ./src/BlueFoxJs/Util/GetProperty.js
+
+const getProperty = (_path, _dict, _sep = ".") => {
+  let _key = _path.split(_sep)[0];
+  let _next_path = _path.split(_sep).slice(1).join(_sep);
+  if (_dict[_key] != undefined) {
+    let R = getProperty(_next_path, _dict[_key], _sep);
+    if (R === true) {
+      return {
+        object: _dict,
+        property: _key,
+        path: _path,
+        separator: _sep,
+        value: _dict[_key],
+      };
+    } else {
+      return R;
+    }
+  } else {
+    if (_path == _next_path) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+};
+
+;// CONCATENATED MODULE: ./src/BlueFoxJs/Util/DeepFreeze.js
+
+const deepFreeze = (object) => {
+  const propNames = Object.getOwnPropertyNames(object);
+  for (const name of propNames) {
+    const value = object[name];
+    if (value && typeof value === "object") {
+      deepFreeze(value);
+    }
+  }
+  return Object.freeze(object);
+};
+
+;// CONCATENATED MODULE: ./src/BlueFoxJs/Walker/WalkHorizontally.js
+
+const walkHorizontally = async (o = { _scope_: null }) => {
+    let pool = [];
+    Object.keys(o)
+      .filter((key) => {
+        return !["_scope_"].includes(key);
+      })
+      .forEach((selector) => {
+        [...o._scope_.querySelectorAll(selector)]
+          .filter((element) => {
+            return element;
+          })
+          .forEach((element) => {
+            pool.push({
+              element: element,
+              selector: new String(selector),
+            });
+          });
+      });
+
+    await Promise.all(
+      pool.map((_) => {
+        return new Promise(async (resolve, reject) => {
+          try {
+            await o[_.selector]({
+              element: _.element,
+              selector: _.selector,
+              self: o,
+            });
+            resolve(_.selector);
+          } catch (ex) {
+            console.info("walkHorizontally |", ex);
+          }
+        });
+      })
+    );
+    return o;
+  }
+;// CONCATENATED MODULE: ./src/BlueFoxJs/Walker/WalkVertically.js
+
+const walkVertically = async (o = { _scope_: null }) => {
+  for (let selector of Object.keys(o).filter((key) => {
+    return !["_scope_"].includes(key);
+  })) {
+    let elements = [...o._scope_.querySelectorAll(selector)].filter(
+      (element) => {
+        return element;
+      }
+    );
+    for (let e of elements) {
+      try {
+        await o[selector]({
+          element: e,
+          selector: new String(selector),
+          self: o,
+        });
+      } catch (ex) {
+        console.info("walkVertically |", ex);
+      }
+    }
+  }
+  return o;
+};
+
+;// CONCATENATED MODULE: ./src/BlueFoxJs/Sync/View.js
+
+
+
+
+("use strict");
+const view = async (_scope_ = document) => {
+  await walkHorizontally({
+    _scope_: _scope_,
+    "[capture]": async (_) => {
+      let target = document.querySelector(
+        _.element.attributes["capture"].value
+      );
+      let targetTagName = target.tagName.toLowerCase();
+
+      _.element.setAttribute("sync", "");
+      _.element.setAttribute("sync-to-this", "");
+
+      if (targetTagName == "input") {
+        _.element.setAttribute("sync-to-property", "textContent");
+        _.element.setAttribute(
+          "sync-from",
+          _.element.attributes["capture"].value
+        );
+        _.element.setAttribute("sync-from-property", "value");
+        _.element.setAttribute(
+          "sync-event",
+          JSON.stringify(["sync", "change", "input"])
+        );
+      } else if (targetTagName == "select") {
+        _.element.setAttribute("sync-to-property", "textContent");
+        _.element.setAttribute(
+          "sync-from",
+          _.element.attributes["capture"].value
+        );
+        _.element.setAttribute(
+          "sync-from-property",
+          "selectedOptions.0.textContent"
+        );
+        _.element.setAttribute(
+          "sync-event",
+          JSON.stringify(["sync", "change"])
+        );
+      }
+
+      _.element.removeAttribute("capture");
+    },
+  });
+
+  await walkVertically({
+    _scope_: _scope_,
+    "[sync]": async (_) => {
+      let init = () => {
+        __init__();
+      };
+      let __init__ = () => {
+        _.element.SyncView = {
+          from: _.element.attributes["sync-from-this"]
+            ? e
+            : document.querySelector(_.element.attributes["sync-from"].value),
+          fromProperty: _.element.attributes["sync-from-property"].value,
+          to: _.element.attributes["sync-to-this"]
+            ? _.element
+            : document.querySelector(_.element.attributes["sync-to"].value),
+          toProperty: _.element.attributes["sync-to-property"].value,
+          events: JSON.parse(
+            _.element.attributes["sync-event"]
+              ? _.element.attributes["sync-event"].value
+              : '["sync"]'
+          ),
+          entryNop: _.element.attributes["sync-entry-nop"],
+          init: init,
+        };
+
+        _.element.SyncView.sync = () => {
+          let fromObj = getProperty(
+            _.element.SyncView.fromProperty,
+            _.element.SyncView.from
+          );
+          let toObj = getProperty(
+            _.element.SyncView.toProperty,
+            _.element.SyncView.to
+          );
+          try {
+            toObj.object[toObj.property] = fromObj.object[fromObj.property];
+          } catch {}
+        };
+        _.element.SyncView.entryNop ? null : _.element.SyncView.sync();
+
+        _.element.SyncView.events.forEach((eventType) => {
+          _.element.SyncView.from.addEventListener(eventType, (event) => {
+            _.element.SyncView.sync();
+            _.element.SyncView.to.dispatchEvent(new Event("sync"));
+          });
+        });
+      };
+      init();
+    },
+    sync: async (_) => {
+      _.element.SyncView = {
+        Syncs: [],
+      };
+      let syncers = JSON.parse(_.element.textContent);
+      let init = (syncer) => {
+        __init__(syncer);
+      };
+      let __init__ = (syncer) => {
+        let separator = syncer.separator ? syncer.separator : ".";
+        let from = syncer.from.split(separator);
+        let to = syncer.to.split(separator);
+
+        let event = syncer.events;
+
+        let from_element = _.self._scope_.querySelector(from[0]);
+        let to_element = _.self._scope_.querySelector(to[0]);
+
+        let SyncView = {
+          separator: separator,
+          from: from_element,
+          fromProperty: from.slice(1).join(separator),
+          to: to_element,
+          toProperty: to.slice(1).join(separator),
+          events: event,
+          init: init,
+        };
+
+        SyncView.sync = () => {
+          let fromObj = getProperty(
+            SyncView.fromProperty,
+            SyncView.from,
+            SyncView.separator
+          );
+          let toObj = getProperty(
+            SyncView.toProperty,
+            SyncView.to,
+            SyncView.separator
+          );
+          try {
+            toObj.object[toObj.property] = fromObj.object[fromObj.property];
+          } catch {}
+        };
+
+        SyncView.events.forEach((eventType) => {
+          SyncView.from.addEventListener(eventType, (event) => {
+            SyncView.sync();
+            SyncView.to.dispatchEvent(new Event("sync"));
+          });
+        });
+        SyncView.sync();
+        _.element.SyncView.Syncs.push(SyncView);
+      };
+
+      if (Array.prototype == syncers.__proto__) {
+        syncers.forEach((syncer) => {
+          init(syncer);
+        });
+      }
+      if (Object.prototype == syncers.__proto__) {
+        init(syncers);
+      }
+    },
+  });
+};
+
+;// CONCATENATED MODULE: ./src/BlueFoxJs/bluefox.js
+
+
+
+
+
+
+("use strict");
+const BlueFoxJs = (() => {
+  let BlueFoxJs = {
+    Util: {
+      getProperty: getProperty,
+    },
+    Walker: {
+      walkHorizontally: walkHorizontally,
+      walkVertically: walkVertically,
+    },
+    Sync: {
+      view: view,
+    },
+  };
+  return deepFreeze(BlueFoxJs);
+})();
+
+;// CONCATENATED MODULE: ./src/BlueFoxJs/index.js
+
+
+("use strict");
+window.dispatchEvent(
+  new CustomEvent("BlueFoxJs@Ready", {
+    detail: { BlueFoxJs: BlueFoxJs },
+  })
+);
+
+/******/ })()
+;

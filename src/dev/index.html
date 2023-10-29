@@ -63,12 +63,20 @@
             <div add target="#area-3">1</div>
         </div>
     </div>
+
+    <div id="root-2">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/profile">profile</a>
+        <div setTextContent="title"></div>
+        <div setTextContent="title2"></div>
+    </div>
 </body>
 
 </html>
 <script defer>
     (() => {
-        window.addEventListener("BlueFoxJs@Ready", (event) => {
+        window.addEventListener("BlueFoxJs@Ready", async (event) => {
             let log = console.log;
             const sleep = msec => new Promise(resolve => setTimeout(resolve, msec));
             log(event);
@@ -127,6 +135,37 @@
                 }
             );
             event.detail.BlueFoxJs.Sync.view();
+
+
+            let route = {
+                // pathname:{
+
+                // },
+                hash: {
+                    "": "/index.html",
+                    "#/about/profile": "/profile.html",
+                }
+            };
+            event.detail.BlueFoxJs.Walker.walkHorizontally(
+                {
+                    _scope_: document,
+                    "a[href]": async (_) => {
+                        _.element.addEventListener("click", (event) => {
+                            event = event || window.event;
+                            event.preventDefault();
+                            window.history.pushState({}, "", event.target.href);
+                        })
+                    },
+                }
+            );
+            log(await event.detail.BlueFoxJs.Sync.value(
+                {
+                    "title": "title"
+                }
+            ));
+
+
+
         });
     })();
 </script>

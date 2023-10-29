@@ -3,6 +3,7 @@ import { deepFreeze } from "BlueFoxJs/Util/DeepFreeze.js";
 import { walkHorizontally } from "BlueFoxJs/Walker/WalkHorizontally.js";
 import { walkVertically } from "BlueFoxJs/Walker/WalkVertically.js";
 import { view } from "BlueFoxJs/Sync/View.js";
+import { value } from "BlueFoxJs/Sync/Value.js";
 
 ("use strict");
 export const BlueFoxJs = (() => {
@@ -16,6 +17,7 @@ export const BlueFoxJs = (() => {
     },
     Sync: {
       view: view,
+      value: value,
     },
   };
   return deepFreeze(BlueFoxJs);

@@ -27,4 +27,7 @@ module.exports = {
       filename: "index.html",
     }),
   ],
+  optimization: {
+    minimize: false,
+  },
 };
