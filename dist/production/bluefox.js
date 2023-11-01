@@ -53,7 +53,7 @@ const getAllPath = (_obj, _sep = ".") => {
   for (let key in _obj) {
     let val = _obj[key];
     if (typeof val === "object") {
-      let subPaths = getAllPath(val);
+      let subPaths = getAllPath(val, _sep);
       subPaths.forEach((e) => {
         paths.push({
           path: [key, e.path].join(_sep),
