@@ -81,7 +81,7 @@ const getAllPath = (_obj, _sep = ".") => {
       let subPaths = getAllPath(val);
       subPaths.forEach((e) => {
         paths.push({
-          path: [key, e.path].join("."),
+          path: [key, e.path].join(_sep),
           value: e.value,
           type: typeof e.value,
         });
