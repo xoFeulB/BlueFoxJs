@@ -2,6 +2,10 @@ const path = require("path");
 
 module.exports = [
   {
+    performance: {
+      maxEntrypointSize: 500000,
+      maxAssetSize: 500000,
+    },
     mode: "production",
     entry: "./src/BlueFoxJs/index.js",
     output: {
@@ -19,6 +23,10 @@ module.exports = [
     },
   },
   {
+    performance: {
+      maxEntrypointSize: 500000,
+      maxAssetSize: 500000,
+    },
     mode: "production",
     entry: "./src/BlueFoxJs/index.js",
     output: {
@@ -33,6 +41,10 @@ module.exports = [
     },
   },
   {
+    performance: {
+      maxEntrypointSize: 500000,
+      maxAssetSize: 500000,
+    },
     mode: "production",
     entry: "./src/BlueFoxJs/bluefox.js",
     output: {
@@ -56,6 +68,10 @@ module.exports = [
     },
   },
   {
+    performance: {
+      maxEntrypointSize: 500000,
+      maxAssetSize: 500000,
+    },
     mode: "production",
     entry: "./src/BlueFoxJs/bluefox.js",
     output: {

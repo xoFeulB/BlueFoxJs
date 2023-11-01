@@ -3,6 +3,10 @@ const outputPath = path.resolve(__dirname, "dist");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
+  performance: {
+    maxEntrypointSize: 500000,
+    maxAssetSize: 500000,
+  },
   mode: "production",
   entry: "./src/BlueFoxJs/index.js",
   output: {

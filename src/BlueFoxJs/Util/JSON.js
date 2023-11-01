@@ -1,5 +1,5 @@
 ("use strict");
-export const getAllPath = (_obj, _sep = ".") => {
+export const getAllPath = (_obj) => {
   if (typeof _obj !== "object") {
     return [];
   }
@@ -8,10 +8,10 @@ export const getAllPath = (_obj, _sep = ".") => {
   for (let key in _obj) {
     let val = _obj[key];
     if (typeof val === "object") {
-      let subPaths = getAllPath(val, _sep);
+      let subPaths = getAllPath(val);
       subPaths.forEach((e) => {
         paths.push({
-          path: [key, e.path].join(_sep),
+          path: [key, e.path].flat(),
           value: e.value,
           type: typeof e.value,
         });

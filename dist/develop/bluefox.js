@@ -42,6 +42,33 @@ const deepFreeze = (object) => {
   return Object.freeze(object);
 };
 
+;// CONCATENATED MODULE: ./src/BlueFoxJs/Util/JSON.js
+
+const getAllPath = (_obj) => {
+  if (typeof _obj !== "object") {
+    return [];
+  }
+
+  let paths = [];
+  for (let key in _obj) {
+    let val = _obj[key];
+    if (typeof val === "object") {
+      let subPaths = getAllPath(val);
+      subPaths.forEach((e) => {
+        paths.push({
+          path: [key, e.path].flat(),
+          value: e.value,
+          type: typeof e.value,
+        });
+      });
+    } else {
+      let path = { path: key, value: val, type: typeof val };
+      paths.push(path);
+    }
+  }
+  return paths;
+};
+
 ;// CONCATENATED MODULE: ./src/BlueFoxJs/Walker/WalkHorizontally.js
 
 const walkHorizontally = async (o = { _scope_: null }) => {
@@ -230,6 +257,7 @@ const view = async (_scope_ = document) => {
           to: to_element,
           toProperty: to.slice(1).join(separator),
           events: event,
+          entryNop: syncer.entryNop,
           init: init,
         };
 
@@ -255,7 +283,7 @@ const view = async (_scope_ = document) => {
             SyncView.to.dispatchEvent(new Event("sync"));
           });
         });
-        SyncView.sync();
+        SyncView.entryNop ? null : SyncView.sync();
         _.element.SyncView.Syncs.push(SyncView);
       };
 
@@ -319,11 +347,13 @@ const value = async (values = {}, _scope_ = document) => {
 
 
 
+
 ("use strict");
 const BlueFoxJs = (() => {
   let BlueFoxJs = {
     Util: {
       getProperty: getProperty,
+      getAllPath: getAllPath,
     },
     Walker: {
       walkHorizontally: walkHorizontally,
