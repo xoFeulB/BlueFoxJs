@@ -8,7 +8,7 @@ export const getAllPath = (_obj, _sep = ".") => {
   for (let key in _obj) {
     let val = _obj[key];
     if (typeof val === "object") {
-      let subPaths = getPath(val);
+      let subPaths = getAllPath(val);
       subPaths.forEach((e) => {
         paths.push({
           path: [key, e.path].join("."),
@@ -16,7 +16,7 @@ export const getAllPath = (_obj, _sep = ".") => {
         });
       });
     } else {
-      let path = { path: key, value: val };
+      let path = { path: key, value: val, type: typeof val };
       paths.push(path);
     }
   }

@@ -120,6 +120,7 @@ export const view = async (_scope_ = document) => {
           to: to_element,
           toProperty: to.slice(1).join(separator),
           events: event,
+          entryNop: syncer.entryNop,
           init: init,
         };
 
@@ -145,7 +146,7 @@ export const view = async (_scope_ = document) => {
             SyncView.to.dispatchEvent(new Event("sync"));
           });
         });
-        SyncView.sync();
+        SyncView.entryNop ? null : SyncView.sync();
         _.element.SyncView.Syncs.push(SyncView);
       };
 
