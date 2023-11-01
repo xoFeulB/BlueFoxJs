@@ -13,6 +13,7 @@ export const getAllPath = (_obj, _sep = ".") => {
         paths.push({
           path: [key, e.path].join("."),
           value: e.value,
+          type: typeof val,
         });
       });
     } else {
