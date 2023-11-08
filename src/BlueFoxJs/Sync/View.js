@@ -55,7 +55,7 @@ export const view = async (_scope_ = document) => {
       let __init__ = () => {
         _.element.SyncView = {
           from: _.element.attributes["sync-from-this"]
-            ? e
+            ? _.element
             : document.querySelector(_.element.attributes["sync-from"].value),
           fromProperty: _.element.attributes["sync-from-property"].value,
           to: _.element.attributes["sync-to-this"]
