@@ -75,7 +75,19 @@
 
 </html>
 <script defer>
+    (async () => {
+        // non-es in async
+        let BlueFoxJs = await new Promise((resolve) => {
+            let BlueFoxJsReady = async (event) => {
+                console.log(this);
+                resolve(event.detail.BlueFoxJs);
+                window.removeEventListener("BlueFoxJs@Ready", BlueFoxJsReady);
+            };
+            window.addEventListener("BlueFoxJs@Ready", BlueFoxJsReady);
+        });
+    })();
     (() => {
+        // non-es in non-async
         window.addEventListener("BlueFoxJs@Ready", async (event) => {
             let log = console.log;
             const sleep = msec => new Promise(resolve => setTimeout(resolve, msec));
