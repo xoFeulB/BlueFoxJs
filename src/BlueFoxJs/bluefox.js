@@ -1,3 +1,4 @@
+import { BlueFox } from "BlueFoxJs/Automation/BlueFox.js";
 import { getProperty } from "BlueFoxJs/Util/GetProperty.js";
 import { deepFreeze } from "BlueFoxJs/Util/DeepFreeze.js";
 import { getAllPath } from "BlueFoxJs/Util/JSON.js";
@@ -9,6 +10,9 @@ import { value } from "BlueFoxJs/Sync/Value.js";
 ("use strict");
 export const BlueFoxJs = (() => {
   let BlueFoxJs = {
+    Automation: {
+      BlueFox: BlueFox,
+    },
     Util: {
       getProperty: getProperty,
       getAllPath: getAllPath,
