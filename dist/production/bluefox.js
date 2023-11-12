@@ -112,7 +112,7 @@ class v0 {
         let e = document.querySelector(action.target);
         if (e) {
           try {
-            await window.BlueFox.captureDOM(
+            await this.captureDOM(
               action.fileName,
               e,
               window,
@@ -318,10 +318,8 @@ class v1 {
       },
       key: async (action) => {
         try {
-          await window.BlueFox.dispatchKeyEvent(action.option);
-        } catch (err) {
-          log(err);
-        }
+          await this.dispatchKeyEvent(action.option);
+        } catch (err) {}
       },
       sleep: async (action) => {
         await this.sleep(action.option.msec);
@@ -356,16 +354,14 @@ class v1 {
           }
 
           try {
-            await window.BlueFox.captureDOM(
+            await this.captureDOM(
               action.option.fileName,
               e,
               window,
               action.option.format,
               action.option.quality
             );
-          } catch (err) {
-            log(err);
-          }
+          } catch (err) {}
         }
       },
       save: async (action) => {
@@ -386,7 +382,6 @@ class v1 {
     };
   }
   async do(J) {
-    log(J);
     this.J = J;
     this.stack = [];
     this.actions = J.actions;
@@ -412,10 +407,13 @@ class BlueFox {
     return await {
       0: async () => {
         let _ = new v0();
+        _.captureDOM = this.captureDOM;
         return await _.do(J);
       },
       1: async () => {
         let _ = new v1();
+        _.captureDOM = this.captureDOM;
+        _.dispatchKeyEvent = this.dispatchKeyEvent;
         return await _.do(J);
       },
     }[J.meta.version]();

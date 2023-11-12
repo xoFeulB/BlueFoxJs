@@ -80,7 +80,7 @@ export class v0 {
         let e = document.querySelector(action.target);
         if (e) {
           try {
-            await window.BlueFox.captureDOM(
+            await this.captureDOM(
               action.fileName,
               e,
               window,

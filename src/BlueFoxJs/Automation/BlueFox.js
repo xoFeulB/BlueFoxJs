@@ -6,10 +6,13 @@ export class BlueFox {
     return await {
       0: async () => {
         let _ = new v0();
+        _.captureDOM = this.captureDOM;
         return await _.do(J);
       },
       1: async () => {
         let _ = new v1();
+        _.captureDOM = this.captureDOM;
+        _.dispatchKeyEvent = this.dispatchKeyEvent;
         return await _.do(J);
       },
     }[J.meta.version]();

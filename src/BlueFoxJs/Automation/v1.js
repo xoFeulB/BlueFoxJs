@@ -152,10 +152,8 @@ export class v1 {
       },
       key: async (action) => {
         try {
-          await window.BlueFox.dispatchKeyEvent(action.option);
-        } catch (err) {
-          log(err);
-        }
+          await this.dispatchKeyEvent(action.option);
+        } catch (err) {}
       },
       sleep: async (action) => {
         await this.sleep(action.option.msec);
@@ -190,16 +188,14 @@ export class v1 {
           }
 
           try {
-            await window.BlueFox.captureDOM(
+            await this.captureDOM(
               action.option.fileName,
               e,
               window,
               action.option.format,
               action.option.quality
             );
-          } catch (err) {
-            log(err);
-          }
+          } catch (err) {}
         }
       },
       save: async (action) => {
@@ -220,7 +216,6 @@ export class v1 {
     };
   }
   async do(J) {
-    log(J);
     this.J = J;
     this.stack = [];
     this.actions = J.actions;
