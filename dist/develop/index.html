@@ -1,4 +1,18 @@
-<!doctype html><html><head><meta charset="utf-8"><title></title><script defer="defer" src="bluefox.js"></script></head><body><div><input id="input-1"> <select id="input-2"><option>test-1</option><option>test-2</option><option>test-3</option><option>test-4</option><option>test-5</option><option>test-6</option><option>test-7</option></select><div capture="#input-1">test</div><div sync sync-from="#input-1" sync-to-this sync-from-property="value" sync-to-property="textContent" sync-event='["sync","change","input"]'>test</div><div capture="#input-2">test</div><input id="input-3"><div id="output-3" value>sync json test</div><sync hidden>[ { "from":"#input-3/value", "to":"#output-3/textContent", "events":["input"], "separator":"/" }, { "from":"#input-3.value", "to":"#output-3.attributes.value.value", "events":["input"] } ]</sync></div><div id="root-1"><div id="area-1"><div volume>0</div><div add target="#area-1">1</div><div add target="#area-1">1</div><div add target="#area-1">1</div></div><hr><div id="area-2"><div volume>0</div><div add target="#area-2">1</div><div add target="#area-2">1</div><div add target="#area-2">1</div></div><hr><div id="area-3"><div volume>0</div><div add target="#area-3">1</div><div add target="#area-3">1</div><div add target="#area-3">1</div></div></div><div id="root-2"><a href="/">Home</a> <a href="/about">About</a> <a href="/profile">profile</a><div settextcontent="title"></div><div settextcontent="title2"></div></div></body></html><script defer="defer">(() => {
+<!doctype html><html><head><meta charset="utf-8"><title></title><script defer="defer" src="bluefox.js"></script></head><body><div><input id="input-1"> <select id="input-2"><option>test-1</option><option>test-2</option><option>test-3</option><option>test-4</option><option>test-5</option><option>test-6</option><option>test-7</option></select><div capture="#input-1">test</div><div sync sync-from="#input-1" sync-to-this sync-from-property="value" sync-to-property="textContent" sync-event='["sync","change","input"]'>test</div><div capture="#input-2">test</div><input id="input-3"><div id="output-3" value>sync json test</div><sync hidden>[ { "from":"#input-3/value", "to":"#output-3/textContent", "events":["input"], "separator":"/" }, { "from":"#input-3.value", "to":"#output-3.attributes.value.value", "events":["input"] } ]</sync></div><div id="root-1"><div id="area-1"><div volume>0</div><div add target="#area-1">1</div><div add target="#area-1">1</div><div add target="#area-1">1</div></div><hr><div id="area-2"><div volume>0</div><div add target="#area-2">1</div><div add target="#area-2">1</div><div add target="#area-2">1</div></div><hr><div id="area-3"><div volume>0</div><div add target="#area-3">1</div><div add target="#area-3">1</div><div add target="#area-3">1</div></div></div><div id="root-2"><a href="/">Home</a> <a href="/about">About</a> <a href="/profile">profile</a><div settextcontent="title"></div><div settextcontent="title2"></div></div></body></html><script defer="defer">(async () => {
+        let log = console.log;
+        // non-es in async
+        let BlueFoxJs = await new Promise((resolve) => {
+            let BlueFoxJsReady = async (event) => {
+                console.log(this);
+                resolve(event.detail.BlueFoxJs);
+                window.removeEventListener("BlueFoxJs@Ready", BlueFoxJsReady);
+            };
+            window.addEventListener("BlueFoxJs@Ready", BlueFoxJsReady);
+        });
+        log(BlueFoxJs);
+    })();
+    (() => {
+        // non-es in non-async
         window.addEventListener("BlueFoxJs@Ready", async (event) => {
             let log = console.log;
             const sleep = msec => new Promise(resolve => setTimeout(resolve, msec));

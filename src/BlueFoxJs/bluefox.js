@@ -6,6 +6,7 @@ import { walkHorizontally } from "BlueFoxJs/Walker/WalkHorizontally.js";
 import { walkVertically } from "BlueFoxJs/Walker/WalkVertically.js";
 import { view } from "BlueFoxJs/Sync/View.js";
 import { value } from "BlueFoxJs/Sync/Value.js";
+import { customFaker } from "BlueFoxJs/Util/Faker.js";
 
 ("use strict");
 export const BlueFoxJs = (() => {
@@ -16,6 +17,7 @@ export const BlueFoxJs = (() => {
     Util: {
       getProperty: getProperty,
       getAllPath: getAllPath,
+      Faker: customFaker,
     },
     Walker: {
       walkHorizontally: walkHorizontally,
@@ -26,5 +28,16 @@ export const BlueFoxJs = (() => {
       value: value,
     },
   };
-  return deepFreeze(BlueFoxJs);
+  return BlueFoxJs;
 })();
+
+export {
+  BlueFox,
+  getProperty,
+  getAllPath,
+  customFaker,
+  walkHorizontally,
+  walkVertically,
+  view,
+  value,
+};

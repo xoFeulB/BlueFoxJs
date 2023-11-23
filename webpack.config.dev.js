@@ -4,8 +4,8 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   performance: {
-    maxEntrypointSize: 500000,
-    maxAssetSize: 500000,
+    maxEntrypointSize: 50000000,
+    maxAssetSize: 50000000,
   },
   mode: "production",
   entry: "./src/BlueFoxJs/index.js",
