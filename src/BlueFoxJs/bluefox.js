@@ -35,7 +35,7 @@ export {
   BlueFox,
   getProperty,
   getAllPath,
-  customFaker,
+  customFaker as Faker,
   walkHorizontally,
   walkVertically,
   view,
