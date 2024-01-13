@@ -26,7 +26,6 @@ var __webpack_exports__ = {};
 __webpack_require__.d(__webpack_exports__, {
   fB: () => (/* reexport */ BlueFox),
   hi: () => (/* binding */ BlueFoxJs),
-  un: () => (/* reexport */ customFaker),
   $S: () => (/* reexport */ getAllPath),
   $s: () => (/* reexport */ getProperty),
   S3: () => (/* reexport */ value),
@@ -1122,7 +1121,7 @@ const BlueFoxJs = (() => {
     Util: {
       getProperty: getProperty,
       getAllPath: getAllPath,
-      Faker: customFaker,
+      // Faker: customFaker,
     },
     Walker: {
       walkHorizontally: walkHorizontally,
@@ -1139,11 +1138,10 @@ const BlueFoxJs = (() => {
 
 var __webpack_exports__BlueFox = __webpack_exports__.fB;
 var __webpack_exports__BlueFoxJs = __webpack_exports__.hi;
-var __webpack_exports__Faker = __webpack_exports__.un;
 var __webpack_exports__getAllPath = __webpack_exports__.$S;
 var __webpack_exports__getProperty = __webpack_exports__.$s;
 var __webpack_exports__value = __webpack_exports__.S3;
 var __webpack_exports__view = __webpack_exports__.ei;
 var __webpack_exports__walkHorizontally = __webpack_exports__.qz;
 var __webpack_exports__walkVertically = __webpack_exports__.rP;
-export { __webpack_exports__BlueFox as BlueFox, __webpack_exports__BlueFoxJs as BlueFoxJs, __webpack_exports__Faker as Faker, __webpack_exports__getAllPath as getAllPath, __webpack_exports__getProperty as getProperty, __webpack_exports__value as value, __webpack_exports__view as view, __webpack_exports__walkHorizontally as walkHorizontally, __webpack_exports__walkVertically as walkVertically };
+export { __webpack_exports__BlueFox as BlueFox, __webpack_exports__BlueFoxJs as BlueFoxJs, __webpack_exports__getAllPath as getAllPath, __webpack_exports__getProperty as getProperty, __webpack_exports__value as value, __webpack_exports__view as view, __webpack_exports__walkHorizontally as walkHorizontally, __webpack_exports__walkVertically as walkVertically };

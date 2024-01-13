@@ -17,7 +17,7 @@ export const BlueFoxJs = (() => {
     Util: {
       getProperty: getProperty,
       getAllPath: getAllPath,
-      Faker: customFaker,
+      // Faker: customFaker,
     },
     Walker: {
       walkHorizontally: walkHorizontally,
@@ -35,7 +35,7 @@ export {
   BlueFox,
   getProperty,
   getAllPath,
-  customFaker as Faker,
+  // customFaker as Faker,
   walkHorizontally,
   walkVertically,
   view,
