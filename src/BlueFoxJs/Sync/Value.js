@@ -4,8 +4,7 @@ export const value = async (values = {}, _scope_ = document) => {
     values: {},
     flesh: () => {
       Object.keys(set.values).forEach((key) => {
-        set.values[`${key}`].setTextContent(set.values[key].value);
-        set.values[`${key}`].setValue(set.values[key].value);
+        set.values[`${key}`].set(set.values[key].value);
       });
     },
   };
@@ -14,15 +13,13 @@ export const value = async (values = {}, _scope_ = document) => {
     set.values[`${key}`] = {
       value: values[key],
       origin: values[key],
-      setTextContent: (v) => {
+      set: (v) => {
         set.values[key].value = v;
         [..._scope_.querySelectorAll(`[setTextContent="${key}"]`)].forEach(
           (e) => {
             e.textContent = v;
           }
         );
-      },
-      setValue: (v) => {
         set.values[key].value = v;
         [..._scope_.querySelectorAll(`[setValue="${key}"]`)].forEach((e) => {
           e.value = v;
@@ -30,8 +27,7 @@ export const value = async (values = {}, _scope_ = document) => {
       },
     };
 
-    set.values[`${key}`].setTextContent(values[key]);
-    set.values[`${key}`].setValue(values[key]);
+    set.values[`${key}`].set(values[key]);
   });
 
   return set;

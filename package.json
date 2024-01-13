@@ -4,6 +4,7 @@
   "description": "^.,.^",
   "scripts": {
     "build": "webpack --config webpack.config.prod.js",
+    "core": "webpack --config webpack.config.core.js",
     "dev": "webpack --config webpack.config.dev.js && npx webpack-dev-server --config webpack.config.dev.js --progress"
   },
   "repository": {

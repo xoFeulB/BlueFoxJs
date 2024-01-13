@@ -172,11 +172,15 @@
                     },
                 }
             );
-            log(await event.detail.BlueFoxJs.Sync.value(
+
+            let value = await event.detail.BlueFoxJs.Sync.value(
                 {
                     "title": "title"
                 }
-            ));
+            );
+
+            log(value);
+            value.values.title.set("test");
 
             log(
                 event.detail.BlueFoxJs.Util.getAllPath({

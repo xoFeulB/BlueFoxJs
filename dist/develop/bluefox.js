@@ -1089,7 +1089,7 @@ const BlueFoxJs = (() => {
     Util: {
       getProperty: getProperty,
       getAllPath: getAllPath,
-      Faker: customFaker,
+      // Faker: customFaker,
     },
     Walker: {
       walkHorizontally: walkHorizontally,
