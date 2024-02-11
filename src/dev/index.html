@@ -71,6 +71,10 @@
         <div setTextContent="title"></div>
         <div setTextContent="title2"></div>
     </div>
+
+    <div>
+        <input id="fileinput" name="fileinput" type="file"/>
+    </div>
 </body>
 
 </html>
@@ -202,6 +206,10 @@
                 })
             );
 
+            const ABCD = new File(["ABCD"], "ABCD.txt", { type: "text/plain" });
+            const dt = new DataTransfer();
+            dt.items.add(ABCD);
+            document.querySelector("#fileinput").files = dt.files;
 
 
         });

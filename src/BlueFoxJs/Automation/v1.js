@@ -153,7 +153,18 @@ export class v1 {
       key: async (action) => {
         try {
           await this.dispatchKeyEvent(action.option);
-        } catch (err) {}
+        } catch (err) { }
+      },
+      file: async (action) => {
+        let e = this.focus.querySelector(action.target.selector);
+        try {
+          let dataTransfer = new DataTransfer();
+          action.files.forEach(file => {
+            let data = new File(file.blob, file.name, { type: file.type });
+            dataTransfer.items.add(data);
+          });
+          e.files = dataTransfer.files;
+        } catch (err) { }
       },
       sleep: async (action) => {
         await this.sleep(action.option.msec);
@@ -195,7 +206,7 @@ export class v1 {
               action.option.format,
               action.option.quality
             );
-          } catch (err) {}
+          } catch (err) { }
         }
       },
       save: async (action) => {
