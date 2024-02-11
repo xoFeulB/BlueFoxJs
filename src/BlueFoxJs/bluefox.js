@@ -7,6 +7,7 @@ import { walkVertically } from "BlueFoxJs/Walker/WalkVertically.js";
 import { view } from "BlueFoxJs/Sync/View.js";
 import { value } from "BlueFoxJs/Sync/Value.js";
 import { customFaker } from "BlueFoxJs/Util/Faker.js";
+import l8 from "@l8js/l8";
 
 ("use strict");
 export const BlueFoxJs = (() => {
@@ -17,7 +18,8 @@ export const BlueFoxJs = (() => {
     Util: {
       getProperty: getProperty,
       getAllPath: getAllPath,
-      // Faker: customFaker,
+      Faker: customFaker,
+      l8: l8,
     },
     Walker: {
       walkHorizontally: walkHorizontally,
@@ -35,7 +37,7 @@ export {
   BlueFox,
   getProperty,
   getAllPath,
-  // customFaker as Faker,
+  customFaker as Faker,
   walkHorizontally,
   walkVertically,
   view,

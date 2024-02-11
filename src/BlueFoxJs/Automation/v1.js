@@ -159,7 +159,7 @@ export class v1 {
         await this.sleep(action.option.msec);
       },
       open: async (action) => {
-        window.location.assign(action.option.url);
+        window.location.href = action.option.url;
       },
       focus: async (action) => {
         let e = this.focus.querySelector(action.target.selector);
