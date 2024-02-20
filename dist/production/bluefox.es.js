@@ -1478,7 +1478,7 @@ class v1 {
         try {
           let dataTransfer = new DataTransfer();
           action.files.forEach(file => {
-            let data = new File(file.blob, file.name, { type: file.type });
+            let data = new File([new window[file.object](file.blob)], file.name, { type: file.type });
             dataTransfer.items.add(data);
           });
           e.files = dataTransfer.files;
