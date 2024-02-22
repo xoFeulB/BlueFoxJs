@@ -1,4 +1,4 @@
-import { BlueFox } from "BlueFoxJs/Automation/BlueFox.js";
+import { BlueFox, BlueFoxScript } from "BlueFoxJs/Automation/BlueFox.js";
 import { getProperty } from "BlueFoxJs/Util/GetProperty.js";
 import { getAllPath } from "BlueFoxJs/Util/JSON.js";
 import { walkHorizontally } from "BlueFoxJs/Walker/WalkHorizontally.js";
@@ -11,6 +11,7 @@ export const BlueFoxJs = (() => {
   let BlueFoxJs = {
     Automation: {
       BlueFox: BlueFox,
+      BlueFoxScript: BlueFoxScript,
     },
     Util: {
       getProperty: getProperty,
@@ -30,6 +31,7 @@ export const BlueFoxJs = (() => {
 
 export {
   BlueFox,
+  BlueFoxScript,
   getProperty,
   getAllPath,
   walkHorizontally,
