@@ -20,11 +20,10 @@ export class BlueFox {
 }
 
 export class BlueFoxScript {
-  constructor() {
+  constructor(config) {
     this.selector = "";
     this.tail = {};
     this.init(config);
-    this.connector = new Connector();
     return this;
   }
   init(config) {

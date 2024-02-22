@@ -26,6 +26,7 @@ var __webpack_exports__ = {};
 __webpack_require__.d(__webpack_exports__, {
   Gt: () => (/* reexport */ BlueFox),
   Tl: () => (/* binding */ BlueFoxJs),
+  BE: () => (/* reexport */ BlueFoxScript),
   hc: () => (/* reexport */ getAllPath),
   UU: () => (/* reexport */ getProperty),
   Uq: () => (/* reexport */ value),
@@ -463,6 +464,199 @@ class BlueFox {
   }
 }
 
+class BlueFoxScript {
+  constructor(config) {
+    this.selector = "";
+    this.tail = {};
+    this.init(config);
+    return this;
+  }
+  init(config) {
+    this.tail = Object.assign({
+      meta: {
+        version: 1,
+      },
+      sleep: 0,
+      dispatchEvents: [
+        {
+          option: {
+            eventObject: "Event",
+            eventType: "change",
+            eventArgs: {
+              bubbles: true
+            }
+          }
+        },
+        {
+          option: {
+            eventObject: "Event",
+            eventType: "input",
+            eventArgs: {
+              bubbles: true
+            }
+          }
+        }
+      ],
+      actions: []
+    }, config);
+    this.stack = [];
+    return this;
+  }
+  target(selector) {
+    this.selector = selector;
+    return this;
+  }
+  defined(selector) {
+    this.selector = `:is([bluefox-label="${selector}"],[aria-description="${selector}"],[aria-label="${selector}"])`;
+    return this;
+  }
+  set(object) {
+    this.tail.actions.push(
+      {
+        type: "set",
+        target: {
+          selector: this.selector,
+          property: null,
+          all: false
+        },
+        option: object
+      }
+    );
+    return this;
+  }
+  setProperty(object) {
+    this.tail.actions.push(
+      {
+        type: "set",
+        target: {
+          selector: this.selector,
+          property: null,
+          all: false
+        },
+        option: {
+          property: object,
+        }
+      }
+    );
+    return this;
+  }
+  setAttribute(object) {
+    this.tail.actions.push(
+      {
+        type: "set",
+        target: {
+          selector: this.selector,
+          property: null,
+          all: false
+        },
+        option: {
+          attribute: object,
+        }
+      }
+    );
+    return this;
+  }
+  call(property, object) {
+    this.tail.actions.push(
+      {
+        type: "call",
+        target: {
+          selector: this.selector,
+          property: property,
+        },
+        option: object
+      }
+    );
+    return this;
+  }
+  event(object) {
+    this.tail.actions.push(
+      {
+        type: "event",
+        target: {
+          selector: this.selector,
+          property: null,
+        },
+        option: object
+      }
+    );
+    return this;
+  }
+  focus(property, reset = false) {
+    this.tail.actions.push(
+      {
+        type: "focus",
+        target: {
+          selector: this.selector,
+          property: property,
+          reset: reset,
+        },
+      }
+    );
+    return this;
+  }
+  capture(
+    selector = this.selector,
+    object = {
+      fileName: "capture",
+      format: "png",
+      quality: 100
+    }
+  ) {
+    this.tail.actions.push(
+      {
+        type: "capture",
+        target: {
+          selector: selector,
+          property: null,
+        },
+        option: object
+      }
+    );
+    return this;
+  }
+  key(object) {
+    this.tail.actions.push(
+      {
+        type: "key",
+        option: object
+      }
+    );
+    return this;
+  }
+  open(url) {
+    this.tail.actions.push(
+      {
+        type: "open",
+        option: { url: url }
+      }
+    );
+    return this;
+  }
+  sleep(msec) {
+    this.tail.actions.push(
+      {
+        type: "sleep",
+        option: {
+          msec: msec
+        }
+      }
+    );
+    return this;
+  }
+  file(object) {
+    this.tail.actions.push(
+      {
+        type: "file",
+        target: {
+          selector: this.selector,
+        },
+        files: object
+      }
+    );
+    return this;
+  }
+}
 ;// CONCATENATED MODULE: ./src/BlueFoxJs/Util/JSON.js
 
 const getAllPath = (_obj) => {
@@ -770,6 +964,7 @@ const BlueFoxJs = (() => {
   let BlueFoxJs = {
     Automation: {
       BlueFox: BlueFox,
+      BlueFoxScript: BlueFoxScript,
     },
     Util: {
       getProperty: getProperty,
@@ -790,10 +985,11 @@ const BlueFoxJs = (() => {
 
 var __webpack_exports__BlueFox = __webpack_exports__.Gt;
 var __webpack_exports__BlueFoxJs = __webpack_exports__.Tl;
+var __webpack_exports__BlueFoxScript = __webpack_exports__.BE;
 var __webpack_exports__getAllPath = __webpack_exports__.hc;
 var __webpack_exports__getProperty = __webpack_exports__.UU;
 var __webpack_exports__value = __webpack_exports__.Uq;
 var __webpack_exports__view = __webpack_exports__.Up;
 var __webpack_exports__walkHorizontally = __webpack_exports__.pX;
 var __webpack_exports__walkVertically = __webpack_exports__.X7;
-export { __webpack_exports__BlueFox as BlueFox, __webpack_exports__BlueFoxJs as BlueFoxJs, __webpack_exports__getAllPath as getAllPath, __webpack_exports__getProperty as getProperty, __webpack_exports__value as value, __webpack_exports__view as view, __webpack_exports__walkHorizontally as walkHorizontally, __webpack_exports__walkVertically as walkVertically };
+export { __webpack_exports__BlueFox as BlueFox, __webpack_exports__BlueFoxJs as BlueFoxJs, __webpack_exports__BlueFoxScript as BlueFoxScript, __webpack_exports__getAllPath as getAllPath, __webpack_exports__getProperty as getProperty, __webpack_exports__value as value, __webpack_exports__view as view, __webpack_exports__walkHorizontally as walkHorizontally, __webpack_exports__walkVertically as walkVertically };
