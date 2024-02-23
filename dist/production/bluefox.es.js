@@ -507,7 +507,7 @@ class BlueFoxScript {
     return this;
   }
   defined(selector) {
-    this.selector = `:is([data-testid="${selector}"][bluefox-label="${selector}"],[aria-description="${selector}"],[aria-label="${selector}"])`;
+    this.selector = `:is([data-testid="${selector}"],[bluefox-label="${selector}"],[aria-description="${selector}"],[aria-label="${selector}"])`;
     return this;
   }
   set(object) {
