@@ -556,6 +556,20 @@ class BlueFoxScript {
     );
     return this;
   }
+  push(object) {
+    this.tail.actions.push(
+      {
+        type: "push",
+        target: {
+          selector: this.selector,
+          property: null,
+          all: false
+        },
+        option: object
+      }
+    );
+    return this;
+  }
   call(property, object) {
     this.tail.actions.push(
       {
