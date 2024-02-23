@@ -117,8 +117,6 @@ export class BlueFoxScript {
         type: "push",
         target: {
           selector: this.selector,
-          property: null,
-          all: false
         },
         option: object
       }

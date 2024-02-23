@@ -237,6 +237,7 @@ export class v1 {
       await this.actionHandler[action.type](action);
       this.msec != 0 ? await this.sleep(this.msec) : null;
     }
+
     return Object.assign(J, {
       stack: this.stack,
     });
