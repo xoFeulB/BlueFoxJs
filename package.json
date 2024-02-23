@@ -1,7 +1,7 @@
 {
-  "name": "@xoFeulB/BlueFoxJs",
-  "version": "1.0.0",
-  "description": "^.,.^",
+  "name": "@xofeulb/bluefox-js",
+  "version": "1.0.1",
+  "description": "A specialized javascript front-end library for bloated systems where front-end and back-end sources are mixed and a framework cannot be installed.",
   "scripts": {
     "build": "webpack --config webpack.config.prod.js",
     "dev": "webpack --config webpack.config.dev.js && npx webpack-dev-server --config webpack.config.dev.js --progress"
@@ -11,10 +11,12 @@
     "url": "git+https://github.com/xoFeulB/BlueFoxJs.git"
   },
   "keywords": [
-    "javascript"
+    "BlueFox",
+    "BlueFoxJs",
+    "querySelector"
   ],
   "author": "BlueFoxEnterprise",
-  "license": "© BlueFoxEnterprise / BlueFoxEnterprise Common License / https://github.com/xoFeulB/BlueFoxJs",
+  "license": "© BlueFoxEnterprise / BlueFoxEnterprise Common License / https://github.com/xoFeulB/BlueFoxJs/blob/main/LICENSE.md",
   "bugs": {
     "url": "https://github.com/xoFeulB/BlueFoxJs/issues"
   },
