@@ -11,9 +11,24 @@ export class v1 {
 
     this.sleep = (msec) => new Promise((resolve) => setTimeout(resolve, msec));
 
+    this.select = (selector) => {
+      if (selector[0] == "/") {
+        return document.evaluate(
+          selector,
+          this.focus,
+          null,
+          XPathResult.FIRST_ORDERED_NODE_TYPE,
+          null,
+        ).singleNodeValue;
+      }
+      else {
+        return this.focus.querySelector(selector);
+      }
+    };
+
     this.actionHandler = {
       set: async (action) => {
-        let e = this.focus.querySelector(action.target.selector);
+        let e = this.select(action.target.selector);
         if (e) {
           if (action?.target?.property) {
             let _ = getProperty(action.target.property, e);
@@ -64,7 +79,7 @@ export class v1 {
         }
       },
       push: async (action) => {
-        let e = this.focus.querySelector(action.target.selector);
+        let e = this.select(action.target.selector);
         if (e) {
           if (action?.target?.property) {
             let _ = getProperty(action.target.property, e);
@@ -99,7 +114,7 @@ export class v1 {
         }
       },
       call: async (action) => {
-        let e = this.focus.querySelector(action.target.selector);
+        let e = this.select(action.target.selector);
         if (e) {
           let _ = getProperty(action.target.property, e);
           if (_.object) {
@@ -112,7 +127,7 @@ export class v1 {
         }
       },
       event: async (action) => {
-        let e = this.focus.querySelector(action.target.selector);
+        let e = this.select(action.target.selector);
         if (e) {
           if (action?.target?.property) {
             let _ = getProperty(action.target.property, e);
@@ -156,7 +171,7 @@ export class v1 {
         } catch (err) { }
       },
       file: async (action) => {
-        let e = this.focus.querySelector(action.target.selector);
+        let e = this.select(action.target.selector);
         try {
           let dataTransfer = new DataTransfer();
           action.files.forEach(file => {
@@ -173,7 +188,7 @@ export class v1 {
         window.location.href = action.option.url;
       },
       focus: async (action) => {
-        let e = this.focus.querySelector(action.target.selector);
+        let e = this.select(action.target.selector);
         if (e) {
           if (action?.target?.property) {
             let _ = getProperty(action.target.property, e);
@@ -189,7 +204,7 @@ export class v1 {
         }
       },
       capture: async (action) => {
-        let e = this.focus.querySelector(action.target.selector);
+        let e = this.select(action.target.selector);
         if (e) {
           if (action?.target?.property) {
             let _ = getProperty(action.target.property, e);
