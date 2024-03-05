@@ -1,6 +1,6 @@
-import { getProperty } from "BlueFoxJs/Util/GetProperty.js";
-import { walkHorizontally } from "BlueFoxJs/Walker/WalkHorizontally.js";
-import { walkVertically } from "BlueFoxJs/Walker/WalkVertically.js";
+import { getProperty } from "@xofeulb/bluefox-js/Util/GetProperty.js";
+import { walkHorizontally } from "@xofeulb/bluefox-js/Walker/WalkHorizontally.js";
+import { walkVertically } from "@xofeulb/bluefox-js/Walker/WalkVertically.js";
 
 ("use strict");
 export const view = async (_scope_ = document) => {

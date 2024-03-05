@@ -1,6 +1,6 @@
-const path = require("path");
+import path from "path";
 
-module.exports = [
+const conf = [
   {
     performance: {
       maxEntrypointSize: 50000000,
@@ -9,13 +9,13 @@ module.exports = [
     mode: "production",
     entry: "./src/BlueFoxJs/index.js",
     output: {
-      path: `${__dirname}/dist/production`,
+      path: `${process.cwd()}/dist/production`,
       filename: "bluefox.js",
     },
     resolve: {
       extensions: [".js"],
       alias: {
-        BlueFoxJs: path.resolve(__dirname, "src/BlueFoxJs/"),
+        BlueFoxJs: path.resolve(process.cwd(), "src/BlueFoxJs/"),
       },
     },
     optimization: {
@@ -30,13 +30,13 @@ module.exports = [
     mode: "production",
     entry: "./src/BlueFoxJs/index.js",
     output: {
-      path: `${__dirname}/dist/production`,
+      path: `${process.cwd()}/dist/production`,
       filename: "bluefox.min.js",
     },
     resolve: {
       extensions: [".js"],
       alias: {
-        BlueFoxJs: path.resolve(__dirname, "src/BlueFoxJs/"),
+        BlueFoxJs: path.resolve(process.cwd(), "src/BlueFoxJs/"),
       },
     },
   },
@@ -48,7 +48,7 @@ module.exports = [
     mode: "production",
     entry: "./src/BlueFoxJs/bluefox.js",
     output: {
-      path: `${__dirname}/dist/production`,
+      path: `${process.cwd()}/dist/production`,
       filename: "bluefox.es.js",
       library: {
         type: "module",
@@ -57,7 +57,7 @@ module.exports = [
     resolve: {
       extensions: [".js"],
       alias: {
-        BlueFoxJs: path.resolve(__dirname, "src/BlueFoxJs/"),
+        BlueFoxJs: path.resolve(process.cwd(), "src/BlueFoxJs/"),
       },
     },
     experiments: {
@@ -75,7 +75,7 @@ module.exports = [
     mode: "production",
     entry: "./src/BlueFoxJs/bluefox.js",
     output: {
-      path: `${__dirname}/dist/production`,
+      path: `${process.cwd()}/dist/production`,
       filename: "bluefox.es.min.js",
       library: {
         type: "module",
@@ -84,7 +84,7 @@ module.exports = [
     resolve: {
       extensions: [".js"],
       alias: {
-        BlueFoxJs: path.resolve(__dirname, "src/BlueFoxJs/"),
+        BlueFoxJs: path.resolve(process.cwd(), "src/BlueFoxJs/"),
       },
     },
     experiments: {
@@ -92,3 +92,4 @@ module.exports = [
     },
   },
 ];
+export { conf as default };

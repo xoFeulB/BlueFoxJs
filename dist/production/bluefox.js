@@ -977,7 +977,6 @@ const BlueFoxJs = (() => {
   return BlueFoxJs;
 })();
 
-
 ;// CONCATENATED MODULE: ./src/BlueFoxJs/index.js
 
 

@@ -1,7 +1,25 @@
 {
   "name": "@xofeulb/bluefox-js",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "A specialized javascript front-end library for bloated systems where front-end and back-end sources are mixed and a framework cannot be installed.",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./src/BlueFoxJs/bluefox.js"
+    },
+    "./Automation/*": {
+      "import": "./src/BlueFoxJs/Automation/*"
+    },
+    "./Util/*": {
+      "import": "./src/BlueFoxJs/Util/*"
+    },
+    "./Walker/*": {
+      "import": "./src/BlueFoxJs/Walker/*"
+    },
+    "./Sync/*": {
+      "import": "./src/BlueFoxJs/Sync/*"
+    }
+  },
   "scripts": {
     "build": "webpack --config webpack.config.prod.js",
     "dev": "webpack --config webpack.config.dev.js && npx webpack-dev-server --config webpack.config.dev.js --progress"
@@ -11,9 +29,7 @@
     "url": "git+https://github.com/xoFeulB/BlueFoxJs.git"
   },
   "keywords": [
-    "BlueFox",
-    "BlueFoxJs",
-    "querySelector"
+    "BlueFox"
   ],
   "author": "BlueFoxEnterprise",
   "license": "© BlueFoxEnterprise / BlueFoxEnterprise Common License / https://github.com/xoFeulB/BlueFoxJs/blob/main/LICENSE.md",
@@ -30,6 +46,5 @@
     "webpack-cli": "^5.0.1",
     "webpack-dev-server": "^4.15.1"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }

@@ -1,4 +1,4 @@
-import { getProperty } from "BlueFoxJs/Util/GetProperty.js";
+import { getProperty } from "@xofeulb/bluefox-js/Util/GetProperty.js";
 
 export class v1 {
   constructor() {

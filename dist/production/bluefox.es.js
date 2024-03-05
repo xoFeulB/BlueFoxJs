@@ -24,15 +24,7 @@ var __webpack_exports__ = {};
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  Gt: () => (/* reexport */ BlueFox),
-  Tl: () => (/* binding */ BlueFoxJs),
-  BE: () => (/* reexport */ BlueFoxScript),
-  hc: () => (/* reexport */ getAllPath),
-  UU: () => (/* reexport */ getProperty),
-  Uq: () => (/* reexport */ value),
-  Up: () => (/* reexport */ view),
-  pX: () => (/* reexport */ walkHorizontally),
-  X7: () => (/* reexport */ walkVertically)
+  T: () => (/* binding */ BlueFoxJs)
 });
 
 ;// CONCATENATED MODULE: ./src/BlueFoxJs/Util/GetProperty.js
@@ -1010,14 +1002,5 @@ const BlueFoxJs = (() => {
   return BlueFoxJs;
 })();
 
-
-var __webpack_exports__BlueFox = __webpack_exports__.Gt;
-var __webpack_exports__BlueFoxJs = __webpack_exports__.Tl;
-var __webpack_exports__BlueFoxScript = __webpack_exports__.BE;
-var __webpack_exports__getAllPath = __webpack_exports__.hc;
-var __webpack_exports__getProperty = __webpack_exports__.UU;
-var __webpack_exports__value = __webpack_exports__.Uq;
-var __webpack_exports__view = __webpack_exports__.Up;
-var __webpack_exports__walkHorizontally = __webpack_exports__.pX;
-var __webpack_exports__walkVertically = __webpack_exports__.X7;
-export { __webpack_exports__BlueFox as BlueFox, __webpack_exports__BlueFoxJs as BlueFoxJs, __webpack_exports__BlueFoxScript as BlueFoxScript, __webpack_exports__getAllPath as getAllPath, __webpack_exports__getProperty as getProperty, __webpack_exports__value as value, __webpack_exports__view as view, __webpack_exports__walkHorizontally as walkHorizontally, __webpack_exports__walkVertically as walkVertically };
+var __webpack_exports__BlueFoxJs = __webpack_exports__.T;
+export { __webpack_exports__BlueFoxJs as BlueFoxJs };

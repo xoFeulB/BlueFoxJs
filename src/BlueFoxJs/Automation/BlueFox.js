@@ -1,5 +1,5 @@
-import { v0 } from "BlueFoxJs/Automation/v0.js";
-import { v1 } from "BlueFoxJs/Automation/v1.js";
+import { v0 } from "@xofeulb/bluefox-js/Automation/v0.js";
+import { v1 } from "@xofeulb/bluefox-js/Automation/v1.js";
 
 export class BlueFox {
   async do(J) {

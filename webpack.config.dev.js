@@ -1,8 +1,8 @@
-const path = require("path");
-const outputPath = path.resolve(__dirname, "dist");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+import path from "path";
+import HtmlWebpackPlugin from "html-webpack-plugin";
+const outputPath = path.resolve(process.cwd(), "dist");
 
-module.exports = {
+const conf = {
   performance: {
     maxEntrypointSize: 50000000,
     maxAssetSize: 50000000,
@@ -10,13 +10,13 @@ module.exports = {
   mode: "production",
   entry: "./src/BlueFoxJs/index.js",
   output: {
-    path: `${__dirname}/dist/develop`,
+    path: `${process.cwd()}/dist/develop`,
     filename: "bluefox.js",
   },
   resolve: {
     extensions: [".js"],
     alias: {
-      BlueFoxJs: path.resolve(__dirname, "src/BlueFoxJs/"),
+      BlueFoxJs: path.resolve(process.cwd(), "src/BlueFoxJs/"),
     },
   },
   devServer: {
@@ -35,3 +35,5 @@ module.exports = {
     minimize: false,
   },
 };
+export { conf as default };
+
