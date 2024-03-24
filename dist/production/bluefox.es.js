@@ -943,6 +943,7 @@ const enableSyncViewElement = () => {
         to: this.attributes.to.value,
         events: this.attributes.events ? JSON.parse(this.attributes.events.value) : ["sync"],
         entryNop: !!this.attributes.entryNop,
+        waitActivate: !!this.attributes.waitActivate,
       };
 
       let init = (syncer) => {
@@ -995,7 +996,13 @@ const enableSyncViewElement = () => {
         this.SyncView = SyncView;
       };
 
-      init(syncer);
+      if (syncer.waitActivate) {
+        this.activate = () => {
+          init(syncer);
+        };
+      } else {
+        init(syncer);
+      }
     }
   });
 }
