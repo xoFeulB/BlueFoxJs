@@ -3,7 +3,7 @@ import { getProperty } from "@xofeulb/bluefox-js/Util/GetProperty.js";
 import { getAllPath } from "@xofeulb/bluefox-js/Util/JSON.js";
 import { walkHorizontally } from "@xofeulb/bluefox-js/Walker/WalkHorizontally.js";
 import { walkVertically } from "@xofeulb/bluefox-js/Walker/WalkVertically.js";
-import { view } from "@xofeulb/bluefox-js/Sync/View.js";
+import { view, enableSyncViewElement } from "@xofeulb/bluefox-js/Sync/View.js";
 import { value } from "@xofeulb/bluefox-js/Sync/Value.js";
 
 ("use strict");
@@ -23,6 +23,7 @@ export const BlueFoxJs = (() => {
     },
     Sync: {
       view: view,
+      enableSyncViewElement: enableSyncViewElement,
       value: value,
     },
   };

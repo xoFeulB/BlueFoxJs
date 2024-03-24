@@ -82,7 +82,7 @@ export const view = async (_scope_ = document) => {
           );
           try {
             toObj.object[toObj.property] = fromObj.object[fromObj.property];
-          } catch {}
+          } catch { }
         };
         _.element.SyncView.entryNop ? null : _.element.SyncView.sync();
 
@@ -137,7 +137,7 @@ export const view = async (_scope_ = document) => {
           );
           try {
             toObj.object[toObj.property] = fromObj.object[fromObj.property];
-          } catch {}
+          } catch { }
         };
 
         SyncView.events.forEach((eventType) => {
@@ -161,3 +161,69 @@ export const view = async (_scope_ = document) => {
     },
   });
 };
+
+export const enableSyncViewElement = () => {
+  window.customElements.define("sync-view", class extends HTMLElement {
+    connectedCallback() {
+      let syncer = {
+        separator: this.attributes.separator ? this.attributes.separator.value : ".",
+        from: this.attributes.from.value,
+        to: this.attributes.to.value,
+        events: this.attributes.events ? JSON.parse(this.attributes.events.value) : ["sync"],
+        entryNop: !!this.attributes.entryNop,
+      };
+
+      let init = (syncer) => {
+        __init__(syncer);
+      };
+      let __init__ = (syncer) => {
+        let separator = syncer.separator ? syncer.separator : ".";
+        let from = syncer.from.split(separator);
+        let to = syncer.to.split(separator);
+
+        let event = syncer.events;
+
+        let from_element = from[0] == "this" ? this : document.querySelector(from[0]);
+        let to_element = to[0] == "this" ? this : document.querySelector(to[0]);
+
+        let SyncView = {
+          separator: separator,
+          from: from_element,
+          fromProperty: from.slice(1).join(separator),
+          to: to_element,
+          toProperty: to.slice(1).join(separator),
+          events: event,
+          entryNop: syncer.entryNop,
+          init: init,
+        };
+
+        SyncView.sync = () => {
+          let fromObj = getProperty(
+            SyncView.fromProperty,
+            SyncView.from,
+            SyncView.separator
+          );
+          let toObj = getProperty(
+            SyncView.toProperty,
+            SyncView.to,
+            SyncView.separator
+          );
+          try {
+            toObj.object[toObj.property] = fromObj.object[fromObj.property];
+          } catch { }
+        };
+
+        SyncView.events.forEach((eventType) => {
+          SyncView.from.addEventListener(eventType, (event) => {
+            SyncView.sync();
+            SyncView.to.dispatchEvent(new Event("sync"));
+          });
+        });
+        SyncView.entryNop ? null : SyncView.sync();
+        this.SyncView = SyncView;
+      };
+
+      init(syncer);
+    }
+  });
+}
