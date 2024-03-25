@@ -182,10 +182,24 @@ export const enableSyncViewElement = () => {
         let from = syncer.from.split(separator);
         let to = syncer.to.split(separator);
 
-        let event = syncer.events;
-
-        let from_element = from[0] == "this" ? this : document.querySelector(from[0]);
-        let to_element = to[0] == "this" ? this : document.querySelector(to[0]);
+        let from_element = (() => {
+          if (from[0] == "this") {
+            return this;
+          }
+          if (from[0] == "window") {
+            return window;
+          }
+          return document.querySelector(from[0]);
+        })();
+        let to_element = (() => {
+          if (to[0] == "this") {
+            return this;
+          }
+          if (to[0] == "window") {
+            return window;
+          }
+          return document.querySelector(to[0]);
+        })();
 
         let SyncView = {
           separator: separator,
@@ -193,7 +207,7 @@ export const enableSyncViewElement = () => {
           fromProperty: from.slice(1).join(separator),
           to: to_element,
           toProperty: to.slice(1).join(separator),
-          events: event,
+          events: syncer.events,
           entryNop: syncer.entryNop,
           init: init,
         };
