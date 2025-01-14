@@ -11,7 +11,7 @@ const conf = {
   entry: "./src/BlueFoxJs/index.js",
   output: {
     path: `${process.cwd()}/dist/develop`,
-    filename: "bluefox.js",
+    filename: "bluefox-js.js",
   },
   resolve: {
     extensions: [".js"],

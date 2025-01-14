@@ -10,7 +10,7 @@ const conf = [
     entry: "./src/BlueFoxJs/index.js",
     output: {
       path: `${process.cwd()}/dist/production`,
-      filename: "bluefox.js",
+      filename: "bluefox-js.js",
     },
     resolve: {
       extensions: [".js"],
@@ -31,7 +31,7 @@ const conf = [
     entry: "./src/BlueFoxJs/index.js",
     output: {
       path: `${process.cwd()}/dist/production`,
-      filename: "bluefox.min.js",
+      filename: "bluefox-js.min.js",
     },
     resolve: {
       extensions: [".js"],
@@ -49,7 +49,7 @@ const conf = [
     entry: "./src/BlueFoxJs/bluefox.js",
     output: {
       path: `${process.cwd()}/dist/production`,
-      filename: "bluefox.es.js",
+      filename: "bluefox-js.es.js",
       library: {
         type: "module",
       },
@@ -76,7 +76,7 @@ const conf = [
     entry: "./src/BlueFoxJs/bluefox.js",
     output: {
       path: `${process.cwd()}/dist/production`,
-      filename: "bluefox.es.min.js",
+      filename: "bluefox-js.es.min.js",
       library: {
         type: "module",
       },
