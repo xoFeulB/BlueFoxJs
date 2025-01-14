@@ -7,40 +7,6 @@
 </head>
 
 <body>
-  <div>
-    <input id="input-1" type="text">
-    <select id="input-2">
-      <option>test-1</option>
-      <option>test-2</option>
-      <option>test-3</option>
-      <option>test-4</option>
-      <option>test-5</option>
-      <option>test-6</option>
-      <option>test-7</option>
-    </select>
-    <div capture="#input-1">test</div>
-    <div sync sync-from="#input-1" sync-to-this sync-from-property="value" sync-to-property="textContent" sync-event='["sync","change","input"]'>test</div>
-    <sync-view from="#input-1.value" to="this.textContent" events='["sync","change","input"]'>test</sync-view>
-    <div capture="#input-2">test</div>
-
-    <input id="input-3" type="text">
-    <div id="output-3" value>sync json test</div>
-    <sync hidden>
-      [
-      {
-      "from":"#input-3/value",
-      "to":"#output-3/textContent",
-      "events":["input"],
-      "separator":"/"
-      },
-      {
-      "from":"#input-3.value",
-      "to":"#output-3.attributes.value.value",
-      "events":["input"]
-      }
-      ]
-    </sync>
-  </div>
   <div id="root-1">
     <div id="area-1">
       <div volume>0</div>
@@ -165,8 +131,6 @@
         },
       }
     );
-    BlueFoxJs.Sync.view();
-    BlueFoxJs.Sync.enableSyncViewElement();
 
 
     let route = {
