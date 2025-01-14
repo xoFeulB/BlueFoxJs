@@ -1,23 +1,17 @@
 {
   "name": "@xofeulb/bluefox-js",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "A specialized javascript front-end library for bloated systems where front-end and back-end sources are mixed and a framework cannot be installed.",
   "type": "module",
   "exports": {
     ".": {
       "import": "./src/BlueFoxJs/bluefox.js"
     },
-    "./Automation/*": {
-      "import": "./src/BlueFoxJs/Automation/*"
-    },
     "./Util/*": {
       "import": "./src/BlueFoxJs/Util/*"
     },
     "./Walker/*": {
       "import": "./src/BlueFoxJs/Walker/*"
-    },
-    "./Sync/*": {
-      "import": "./src/BlueFoxJs/Sync/*"
     }
   },
   "scripts": {
