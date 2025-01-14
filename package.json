@@ -1,7 +1,7 @@
 {
   "name": "@xofeulb/bluefox-js",
   "version": "1.0.0",
-  "description": "A specialized javascript front-end library for bloated systems where front-end and back-end sources are mixed and a framework cannot be installed.",
+  "description": "",
   "type": "module",
   "exports": {
     ".": {
@@ -12,6 +12,9 @@
     },
     "./Walker/*": {
       "import": "./src/BlueFoxJs/Walker/*"
+    },
+    "./Selector/*": {
+      "import": "./src/BlueFoxJs/Selector/*"
     }
   },
   "scripts": {
@@ -40,5 +43,7 @@
     "webpack-cli": "^5.0.1",
     "webpack-dev-server": "^4.15.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "css-selector-generator": "^3.6.9"
+  }
 }

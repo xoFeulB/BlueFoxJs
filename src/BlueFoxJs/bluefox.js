@@ -4,6 +4,8 @@ import { getAllPath } from "@xofeulb/bluefox-js/Util/JSON.js";
 import { walkHorizontally } from "@xofeulb/bluefox-js/Walker/WalkHorizontally.js";
 import { walkVertically } from "@xofeulb/bluefox-js/Walker/WalkVertically.js";
 
+import { getCssSelector } from "css-selector-generator";
+
 ("use strict");
 export const BlueFoxJs = (() => {
   let BlueFoxJs = {
@@ -16,6 +18,9 @@ export const BlueFoxJs = (() => {
       walkHorizontally: walkHorizontally,
       walkVertically: walkVertically,
     },
+    Selector: {
+      getCssSelector: getCssSelector
+    }
   };
   return BlueFoxJs;
 })();
