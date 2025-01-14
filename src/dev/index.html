@@ -29,19 +29,6 @@
       <div add target="#area-3">1</div>
     </div>
   </div>
-
-  <div id="root-2">
-    <a href="/">Home</a>
-    <a href="/about">About</a>
-    <a href="/profile">profile</a>
-    <div setTextContent="title"></div>
-    <div setTextContent="title2"></div>
-  </div>
-
-  <div>
-    <input id="fileinput" name="fileinput" type="file" />
-    <button Download>Download</button>
-  </div>
 </body>
 
 </html>
@@ -83,86 +70,8 @@
           _.self._scope_.querySelector("#area-3 [volume]").textContent = Number(_.element.textContent) + Number(_.self._scope_.querySelector("#area-3 [volume]").textContent);
           _.element.textContent = _.self._scope_.querySelector("#area-3 [volume]").textContent;
         },
-        // '#root-1 [target="#area-1"]': async (_) => {
-        //     await sleep(5000);
-        //     _.self._scope_.querySelector("[volume]").textContent = Number(_.element.textContent) + Number(_.self._scope_.querySelector("[volume]").textContent);
-        //     _.element.textContent = _.textContent;
-        // },
-        // '#root-1 [target="#area-2"]': async (_) => {
-        //     await sleep(6000);
-        //     _.self._scope_.querySelector("[volume]").textContent = Number(_.element.textContent) + Number(_.self._scope_.querySelector("[volume]").textContent);
-        //     _.element.textContent = _.self._scope_.querySelector("[volume]").textContent;
-        // },
-        // '#root-1 [target="#area-3"]': async (_) => {
-        //     await sleep(7000);
-        //     _.self._scope_.querySelector("[volume]").textContent = Number(_.element.textContent) + Number(_.self._scope_.querySelector("[volume]").textContent);
-        //     _.element.textContent = _.self._scope_.querySelector("[volume]").textContent;
-        // },
-        // '#root-2 [target="#area-1"]': async (_) => {
-        //     await sleep(8000);
-        //     _.self._scope_.querySelector("[volume]").textContent = Number(_.element.textContent) + Number(_.self._scope_.querySelector("[volume]").textContent);
-        //     _.element.textContent = _.textContent;
-        // },
-        // '#root-2 [target="#area-2"]': async (_) => {
-        //     await sleep(9000);
-        //     _.self._scope_.querySelector("[volume]").textContent = Number(_.element.textContent) + Number(_.self._scope_.querySelector("[volume]").textContent);
-        //     _.element.textContent = _.self._scope_.querySelector("[volume]").textContent;
-        // },
-        // '#root-2 [target="#area-3"]': async (_) => {
-        //     await sleep(10000);
-        //     _.self._scope_.querySelector("[volume]").textContent = Number(_.element.textContent) + Number(_.self._scope_.querySelector("[volume]").textContent);
-        //     _.element.textContent = _.self._scope_.querySelector("[volume]").textContent;
-        // },
-        "[Download]": async (_) => {
-          _.element.addEventListener("click", () => {
-            log(document.querySelector("#fileinput").files);
-            [...document.querySelector("#fileinput").files].forEach((file) => {
-              let blob = new Blob([file], { type: file.type });
-              Object.assign(document.createElement("a"), {
-                href: window.URL.createObjectURL(
-                  new Blob([blob], {
-                    type: file.type,
-                  })
-                ),
-                download: file.name,
-              }).click();
-            });
-          });
-        },
       }
     );
-
-
-    let route = {
-      // pathname:{
-
-      // },
-      hash: {
-        "": "/index.html",
-        "#/about/profile": "/profile.html",
-      }
-    };
-    BlueFoxJs.Walker.walkHorizontally(
-      {
-        _scope_: document,
-        "a[href]": async (_) => {
-          _.element.addEventListener("click", (event) => {
-            event = event || window.event;
-            event.preventDefault();
-            window.history.pushState({}, "", event.target.href);
-          })
-        },
-      }
-    );
-
-    let value = await BlueFoxJs.Sync.value(
-      {
-        "title": "title"
-      }
-    );
-
-    log(value);
-    value.values.title.set("test");
 
     log(
       BlueFoxJs.Util.getAllPath({
