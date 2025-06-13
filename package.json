@@ -42,8 +42,5 @@
     "webpack": "^5.89.0",
     "webpack-cli": "^5.0.1",
     "webpack-dev-server": "^4.15.1"
-  },
-  "dependencies": {
-    "css-selector-generator": "^3.6.9"
   }
 }
